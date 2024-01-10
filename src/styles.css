@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black selection:bg-amber-500 selection:text-black;
+  }
+}
+
+@layer utilities {
+  .app {
+    @apply container m-auto flex min-h-screen items-center justify-center text-xs text-white md:text-sm;
+
+    .table {
+      @apply w-full table-auto xl:mx-auto xl:w-3/5;
+
+      th,
+      td {
+        @apply px-4 py-2 text-center md:px-5 md:py-3 md:text-left lg:px-6 lg:py-4;
+      }
+
+      .table_caption {
+        @apply mb-2 text-xl md:mb-3 md:text-left md:text-2xl lg:mb-4;
+      }
+
+      .table_head {
+        @apply border border-amber-200 bg-stone-950 font-medium;
+
+        th {
+          @apply first:text-center;
+        }
+      }
+
+      .table_body {
+        .table_row {
+          @apply border-b border-amber-100 last:border-none even:bg-stone-950;
+
+          img {
+            @apply mr-4 inline-block h-auto w-4 select-none md:w-6;
+          }
+
+          span {
+            @apply text-xs;
+          }
+
+          th {
+            @apply text-center;
+          }
+        }
+      }
+    }
+
+    .button {
+      @apply rounded-full bg-green-500 px-6 py-4 font-bold uppercase text-black transition-all enabled:hover:opacity-70 enabled:active:scale-90 disabled:cursor-not-allowed disabled:bg-green-200;
+    }
+  }
+}
