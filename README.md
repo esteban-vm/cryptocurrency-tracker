@@ -1,1 +1,1 @@
-# Vite React Tailwind Template
+# Top 10 cryptocurrencies
