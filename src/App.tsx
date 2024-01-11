@@ -1,38 +1,51 @@
 import type { FC } from 'react'
+import type { ILoadingOptions } from 'notiflix'
 import { useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { Loading, Report, type ILoadingOptions } from 'notiflix'
+import { Loading, Report } from 'notiflix'
 import { Button, Row, Table } from '@/components'
-import { getCoinMarkets } from '@/api'
+import { useGetCoinMarkets } from '@/hooks'
 
 const App: FC = () => {
-  const { data, error, isLoading, isRefetching, isSuccess, isError, refetch } = useQuery({
-    queryKey: ['markets'],
-    queryFn: getCoinMarkets,
-    refetchInterval: ({ state }) => (state.status !== 'error' ? 30_000 : false),
-    refetchOnWindowFocus: false,
-    retry: false,
-  })
+  const {
+    data: markets,
+    error,
+    isLoading: loading,
+    isRefetching: refetching,
+    isSuccess: successful,
+    isError: failed,
+    refetch: retry,
+  } = useGetCoinMarkets()
 
   useEffect(() => {
-    const messageColor = 'rgb(34 197 94)'
-    const options: ILoadingOptions = { messageColor, svgColor: messageColor, svgSize: '100px' }
-    if (isLoading) Loading.hourglass('Loading...', options)
-    if (isRefetching) Loading.pulse('Updating...', options)
-    if (isSuccess || isError) Loading.remove()
-    if (isError && !isRefetching) Report.failure('Something went wrong', error.message, 'OK')
-  }, [isRefetching, isLoading, isSuccess, isError, error?.message])
+    const color = 'rgb(34 197 94)'
+
+    const options: ILoadingOptions = {
+      messageColor: color,
+      svgColor: color,
+      svgSize: '100px',
+    }
+
+    if (loading) {
+      Loading.hourglass('Loading...', options)
+    } else if (refetching) {
+      Loading.pulse('Updating...', options)
+    } else if (failed) {
+      Report.failure('Something went wrong', error.message, 'OK')
+    }
+
+    if (successful || failed) Loading.remove()
+  }, [error?.message, failed, loading, refetching, successful])
 
   return (
     <main className='app'>
-      {isSuccess && (
+      {successful && (
         <Table>
-          {data.map((market, index) => (
+          {markets.map((market, index) => (
             <Row key={market.id} index={index + 1} {...market} />
           ))}
         </Table>
       )}
-      {isError && <Button disabled={isRefetching} onClick={() => refetch()} />}
+      {failed && <Button disabled={refetching} onClick={() => retry()} />}
     </main>
   )
 }

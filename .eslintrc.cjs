@@ -12,6 +12,7 @@ module.exports = {
     'plugin:tailwindcss/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   ignorePatterns: ['dist', '*.cjs', 'node_modules', 'public'],
   settings: { 'import/resolver': { typescript: true }, react: { version: 'detect' } },

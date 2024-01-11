@@ -7,7 +7,7 @@ interface TableProps {
 const Table: FC<TableProps> = ({ children }) => {
   return (
     <table className='table'>
-      <caption className='table_caption'>Top 10 de criptomonedas</caption>
+      <caption className='table_caption'>Top 10 cryptocurrencies</caption>
       <thead className='table_head'>
         <tr>
           {['#', 'Assets', 'Price', '24H', 'Market cap'].map((heading) => (
