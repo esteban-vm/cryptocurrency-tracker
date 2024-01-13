@@ -37,7 +37,7 @@ const App: FC = () => {
   }, [error?.message, failed, loading, refetching, successful])
 
   return (
-    <main className='app'>
+    <main>
       {successful && (
         <Table>
           {markets.map((market, index) => (

@@ -9,43 +9,44 @@
 }
 
 @layer utilities {
-  .app {
-    @apply container m-auto flex min-h-screen items-center justify-center text-xs text-white md:text-sm;
+  main {
+    @apply container mx-auto flex min-h-screen items-center justify-center overflow-x-auto text-slate-300;
 
-    .table {
-      @apply w-full table-auto overflow-y-auto xl:w-3/5;
+    table {
+      @apply max-h-screen w-full text-center text-xs md:text-sm lg:text-base xl:w-4/5 2xl:w-3/5;
+
+      caption,
+      thead {
+        @apply uppercase;
+      }
+
+      caption {
+        @apply mb-2 text-sm font-bold md:text-left md:text-base lg:text-lg xl:text-2xl;
+      }
 
       th,
       td {
-        @apply px-4 py-2 text-center md:px-5 md:py-3 md:text-left lg:px-6 lg:py-4;
+        @apply whitespace-nowrap px-4 py-2 md:px-6 md:py-3 lg:px-7 lg:py-4;
       }
 
-      .table_caption {
-        @apply mb-2 text-xl md:mb-3 md:text-left md:text-2xl lg:mb-4;
-      }
-
-      .table_head {
-        @apply border border-amber-200 bg-stone-950 font-medium;
-
-        th {
-          @apply first:text-center;
+      thead {
+        tr {
+          @apply border border-slate-600 bg-slate-950;
         }
       }
 
-      .table_body {
-        .table_row {
-          @apply border-b border-amber-100 last:border-none even:bg-stone-950;
+      tbody {
+        @apply divide-y divide-slate-600;
 
-          img {
-            @apply mr-4 inline-block h-auto w-4 select-none md:w-6;
-          }
+        img {
+          @apply mr-2 inline-block h-auto w-3 align-text-bottom md:mr-3 md:w-4 lg:mr-4 lg:w-5;
+        }
+
+        tr {
+          @apply bg-slate-900 transition-all hover:bg-opacity-80;
 
           span {
             @apply text-xs;
-          }
-
-          th {
-            @apply text-center;
           }
         }
       }

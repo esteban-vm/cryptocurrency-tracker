@@ -8,7 +8,7 @@ interface RowProps extends CoinMarkets {
 
 const Row: FC<RowProps> = ({ index, image, name, current_price, price_change_percentage_24h, market_cap }) => {
   return (
-    <tr className='table_row'>
+    <tr>
       <th scope='row'>{index}</th>
       <td>
         <img src={image} alt={name} /> {name}
