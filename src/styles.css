@@ -6,54 +6,50 @@
   body {
     @apply bg-black selection:bg-amber-500 selection:text-black;
   }
-}
 
-@layer utilities {
   main {
     @apply container mx-auto flex min-h-screen items-center justify-center overflow-x-auto text-slate-300;
+  }
 
-    table {
-      @apply max-h-screen w-full text-center text-xs md:text-sm lg:text-base xl:w-4/5 2xl:w-3/5;
+  table {
+    @apply max-h-screen w-full text-center text-xs md:text-sm lg:text-base xl:w-4/5 2xl:w-3/5;
 
-      caption,
-      thead {
-        @apply uppercase;
+    caption,
+    thead {
+      @apply uppercase;
+    }
+
+    caption {
+      @apply mb-2 text-sm font-bold md:mb-3 md:text-left md:text-base lg:mb-4 lg:text-lg xl:text-2xl;
+    }
+
+    th,
+    td {
+      @apply whitespace-nowrap px-4 py-2 md:px-6 md:py-3 lg:px-7 lg:py-4;
+    }
+
+    thead {
+      @apply border border-slate-600 bg-slate-950;
+    }
+
+    tbody {
+      @apply divide-y divide-slate-600;
+
+      img {
+        @apply mr-2 inline-block h-auto w-3 select-none align-text-bottom md:mr-3 md:w-4 lg:mr-4 lg:w-5;
       }
 
-      caption {
-        @apply mb-2 text-sm font-bold md:text-left md:text-base lg:text-lg xl:text-2xl;
-      }
+      tr {
+        @apply bg-slate-900 transition-all hover:bg-opacity-80;
 
-      th,
-      td {
-        @apply whitespace-nowrap px-4 py-2 md:px-6 md:py-3 lg:px-7 lg:py-4;
-      }
-
-      thead {
-        tr {
-          @apply border border-slate-600 bg-slate-950;
-        }
-      }
-
-      tbody {
-        @apply divide-y divide-slate-600;
-
-        img {
-          @apply mr-2 inline-block h-auto w-3 align-text-bottom md:mr-3 md:w-4 lg:mr-4 lg:w-5;
-        }
-
-        tr {
-          @apply bg-slate-900 transition-all hover:bg-opacity-80;
-
-          span {
-            @apply text-xs;
-          }
+        span {
+          @apply text-xs;
         }
       }
     }
+  }
 
-    .button {
-      @apply rounded-full bg-green-500 px-6 py-4 font-bold uppercase text-black transition-all enabled:hover:opacity-70 enabled:active:scale-90 disabled:cursor-not-allowed disabled:bg-green-200;
-    }
+  button {
+    @apply rounded-full bg-green-500 px-6 py-4 font-bold uppercase text-black transition-all enabled:hover:opacity-70 enabled:active:scale-90 disabled:cursor-not-allowed disabled:bg-green-200;
   }
 }

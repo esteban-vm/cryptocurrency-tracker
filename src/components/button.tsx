@@ -7,7 +7,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = (props) => {
   return (
-    <button type='button' className='button' {...props}>
+    <button type='button' {...props}>
       Retry
     </button>
   )
