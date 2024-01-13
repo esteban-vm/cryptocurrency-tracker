@@ -13,7 +13,7 @@
     @apply container m-auto flex min-h-screen items-center justify-center text-xs text-white md:text-sm;
 
     .table {
-      @apply w-full table-auto xl:mx-auto xl:w-3/5;
+      @apply w-full table-auto overflow-y-auto xl:w-3/5;
 
       th,
       td {
