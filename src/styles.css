@@ -12,7 +12,7 @@
   }
 
   table {
-    @apply max-h-screen w-full text-center text-xs md:text-sm lg:text-base xl:w-4/5 2xl:w-3/5;
+    @apply w-full text-center text-xs md:text-sm lg:text-base xl:w-4/5 2xl:w-3/5;
 
     caption,
     thead {
