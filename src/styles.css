@@ -50,6 +50,6 @@
   }
 
   button {
-    @apply rounded-full !bg-green-500 px-6 py-4 font-bold uppercase text-black transition-all enabled:hover:opacity-70 enabled:active:scale-90 disabled:cursor-not-allowed disabled:bg-green-200;
+    @apply rounded-full !bg-green-500 px-6 py-4 font-bold uppercase text-black transition-all enabled:hover:opacity-70 enabled:active:scale-90 disabled:cursor-not-allowed disabled:!bg-green-200;
   }
 }
