@@ -1,11 +1,11 @@
-const priceFormatter = Intl.NumberFormat('en-US', {
+const currencyFormatter = Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
   minimumFractionDigits: 0,
   maximumFractionDigits: 20, // <--- This way, all trailing zeros will be removed
 })
 
-export const formatPrice = (price: number) => priceFormatter.format(price)
+export const formatCurrency = (price: number) => currencyFormatter.format(price)
 
 const percentageFormatter = Intl.NumberFormat('en-US', {
   style: 'percent',

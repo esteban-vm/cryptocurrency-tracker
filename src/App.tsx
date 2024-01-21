@@ -22,7 +22,7 @@ const App: FC = () => {
     const options: ILoadingOptions = {
       messageColor: color,
       svgColor: color,
-      svgSize: '100px',
+      svgSize: '70px',
     }
 
     if (loading) {
