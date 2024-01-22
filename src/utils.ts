@@ -5,7 +5,7 @@ const currencyFormatter = Intl.NumberFormat('en-US', {
   maximumFractionDigits: 20, // <--- This way, all trailing zeros will be removed
 })
 
-export const formatCurrency = (price: number) => currencyFormatter.format(price)
+export const formatCurrency = (currency: number) => currencyFormatter.format(currency)
 
 const percentageFormatter = Intl.NumberFormat('en-US', {
   style: 'percent',
