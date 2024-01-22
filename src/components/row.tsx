@@ -1,6 +1,6 @@
 import type { CoinMarkets } from '@crypto-coffee/coingecko-api/dist/types'
 import type { FC } from 'react'
-import { formatCurrency, formatPercentage } from '@/utils'
+import { formatCurrency, formatPercent, attachClass, attachArrow } from '@/utils'
 
 interface RowProps extends CoinMarkets {
   index: number
@@ -22,9 +22,9 @@ const Row: FC<RowProps> = ({
         <img src={image} alt={name} /> {name} ({symbol})
       </td>
       <td>{formatCurrency(price)}</td>
-      <td className={change > 0 ? 'text-green-500' : change === 0 ? 'text-slate-300' : 'text-red-500'}>
-        <span>{change > 0 ? '▲ ' : change === 0 ? '' : '▼ '}</span>
-        {formatPercentage(change)}
+      <td className={attachClass(change)}>
+        <span>{attachArrow(change)}</span>
+        {formatPercent(change)}
       </td>
       <td>{formatCurrency(cap)}</td>
     </tr>
