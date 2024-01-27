@@ -18,16 +18,16 @@ const percentFormatter = Intl.NumberFormat(languageLocale, {
 export const formatCurrency = (value: number) => currencyFormatter.format(value)
 
 export const formatPercent = (value: number) => {
-  const fixed = +value.toFixed(percentFractionDigits)
+  const fixedValue = +value.toFixed(percentFractionDigits)
   let formattedChange = percentFormatter.format(Math.abs(value / 100))
-  let className: string
+  let className = ' first-letter:text-xs'
 
-  if (fixed > 0) {
+  if (fixedValue > 0) {
     formattedChange = '▲ ' + formattedChange
-    className = 'text-green-500 first-letter:text-xs'
-  } else if (fixed < 0) {
+    className = 'text-green-500' + className
+  } else if (fixedValue < 0) {
     formattedChange = '▼ ' + formattedChange
-    className = 'text-red-500 first-letter:text-xs'
+    className = 'text-red-500' + className
   } else {
     className = 'text-slate-300'
   }
