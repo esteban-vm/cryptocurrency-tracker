@@ -41,10 +41,6 @@
 
       tr {
         @apply bg-slate-900 transition-all hover:bg-opacity-80;
-
-        span {
-          @apply text-xs;
-        }
       }
     }
   }

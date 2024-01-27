@@ -15,16 +15,22 @@ const percentFormatter = Intl.NumberFormat(languageLocale, {
   maximumFractionDigits: percentFractionDigits,
 })
 
-const attachValue = (change: number, ...options: [string, string, string]) => {
-  const fixedChange = +change.toFixed(percentFractionDigits)
-  let resultValue: string
-  if (fixedChange > 0) resultValue = options[0]
-  else if (fixedChange < 0) resultValue = options[1]
-  else resultValue = options[2]
-  return resultValue
-}
+export const formatCurrency = (value: number) => currencyFormatter.format(value)
 
-export const formatCurrency = (currency: number) => currencyFormatter.format(currency)
-export const formatPercent = (percentage: number) => percentFormatter.format(Math.abs(percentage / 100))
-export const attachClass = (change: number) => attachValue(change, 'text-green-500', 'text-red-500', 'text-slate-300')
-export const attachArrow = (change: number) => attachValue(change, '▲ ', '▼ ', '')
+export const formatPercent = (value: number) => {
+  const fixed = +value.toFixed(percentFractionDigits)
+  let formattedChange = percentFormatter.format(Math.abs(value / 100))
+  let className: string
+
+  if (fixed > 0) {
+    formattedChange = '▲ ' + formattedChange
+    className = 'text-green-500 first-letter:text-xs'
+  } else if (fixed < 0) {
+    formattedChange = '▼ ' + formattedChange
+    className = 'text-red-500 first-letter:text-xs'
+  } else {
+    className = 'text-slate-300'
+  }
+
+  return <const>[formattedChange, className]
+}
