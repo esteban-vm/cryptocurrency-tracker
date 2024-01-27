@@ -19,18 +19,16 @@ export const formatCurrency = (value: number) => currencyFormatter.format(value)
 
 export const formatPercent = (value: number) => {
   const fixedValue = +value.toFixed(percentFractionDigits)
-  let formattedChange = percentFormatter.format(Math.abs(value / 100))
-  let className = ' first-letter:text-xs'
+  const formattedValue = percentFormatter.format(Math.abs(fixedValue / 100))
+  let className = ' before:mr-1 before:text-xs'
 
   if (fixedValue > 0) {
-    formattedChange = '▲ ' + formattedChange
-    className = 'text-green-500' + className
+    className = 'text-green-500 before:content-["▲"]' + className
   } else if (fixedValue < 0) {
-    formattedChange = '▼ ' + formattedChange
-    className = 'text-red-500' + className
+    className = 'text-red-500 before:content-["▼"]' + className
   } else {
     className = 'text-slate-300'
   }
 
-  return <const>[formattedChange, className]
+  return <const>[formattedValue, className]
 }
